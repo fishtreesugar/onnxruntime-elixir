@@ -1,0 +1,15 @@
+/_build/
+/cover/
+/deps/
+/doc/
+/erl_crash.dump
+/priv/*.so
+/priv/*.dll
+/priv/*.dylib
+/priv/libonnxruntime*
+/vendor/onnxruntime/
+/checksum-*.exs
+/.elixir_ls/
+.DS_Store
+/cache/
+/models/resnet50.onnx

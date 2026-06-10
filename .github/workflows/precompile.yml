@@ -1,0 +1,33 @@
+name: precompile
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  precompile:
+    name: ${{ matrix.os }} / OTP ${{ matrix.otp }}
+    runs-on: ${{ matrix.os }}
+    env:
+      MIX_ENV: prod
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-14]
+        otp: ["27", "28"]
+        elixir: ["1.19"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ matrix.otp }}
+          elixir-version: ${{ matrix.elixir }}
+      - run: mix deps.get
+      - run: mkdir -p cache
+      - run: mix elixir_make.precompile
+        env:
+          ELIXIR_MAKE_CACHE_DIR: ${{ github.workspace }}/cache
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: cache/*.tar.gz
