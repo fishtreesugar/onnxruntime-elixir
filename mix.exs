@@ -1,7 +1,7 @@
 defmodule OnnxRuntime.MixProject do
   use Mix.Project
 
-  @version "0.1.0-rc.0"
+  @version "0.1.0-rc.1"
   @onnxruntime_version "1.26.0"
   @github_repo System.get_env("GITHUB_REPOSITORY") || "fishtreesugar/onnxruntime-elixir"
   @github_url System.get_env("ONNXRUNTIME_ELIXIR_GITHUB_URL") ||
