@@ -1,9 +1,9 @@
 defmodule OnnxRuntime.MixProject do
   use Mix.Project
 
-  @version "0.1.0-dev"
+  @version "0.1.0-rc.0"
   @onnxruntime_version "1.26.0"
-  @github_repo System.get_env("GITHUB_REPOSITORY") || "onnxruntime-elixir/onnxruntime-elixir"
+  @github_repo System.get_env("GITHUB_REPOSITORY") || "fishtreesugar/onnxruntime-elixir"
   @github_url System.get_env("ONNXRUNTIME_ELIXIR_GITHUB_URL") ||
                 "https://github.com/#{@github_repo}"
   @precompile_url System.get_env("ONNXRUNTIME_PRECOMPILE_URL") ||
@@ -94,8 +94,7 @@ defmodule OnnxRuntime.MixProject do
         "GitHub" => @github_url,
         "ONNX Runtime" => "https://github.com/microsoft/onnxruntime"
       },
-      files:
-        ~w(.formatter.exs README.md LICENSE Makefile mix.exs lib c_src scripts checksum.exs checksum-*.exs)
+      files: ~w(.formatter.exs README.md LICENSE Makefile mix.exs lib c_src scripts checksum.exs)
     ]
   end
 end
