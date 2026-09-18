@@ -37,10 +37,10 @@ compiler and either:
   * `ORT_INCLUDE_DIR` and `ORT_LIB_DIR` pointing at an existing ONNX Runtime
     distribution.
 
-The default ONNX Runtime version is `1.26.0`. Override it with:
+The default ONNX Runtime version is `1.30.0`. Override it with:
 
 ```shell
-ONNXRUNTIME_VERSION=1.26.0 mix compile
+ONNXRUNTIME_VERSION=1.30.0 mix compile
 ```
 
 ## Precompilation
@@ -59,8 +59,8 @@ The precompiled archive includes the NIF and `libonnxruntime` runtime library
 from `priv/`.
 
 The default precompile targets follow the official ONNX Runtime CPU archives for
-version `1.26.0`: macOS arm64, Linux x64, and Linux aarch64. macOS x86_64 is
-not enabled by default because ONNX Runtime v1.26.0 does not publish an
+version `1.30.0`: macOS arm64, Linux x64, and Linux aarch64. macOS x86_64 is
+not enabled by default because ONNX Runtime v1.30.0 does not publish an
 `onnxruntime-osx-x86_64` archive.
 
 

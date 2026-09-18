@@ -15,7 +15,7 @@ This document describes how to publish a new `onnxruntime` release with precompi
 The workflow runs on OTP `27` and `28` with Elixir `1.19`. The generated artifact name includes the NIF version, target, and package version, for example:
 
 ```text
-onnxruntime-nif-2.17-aarch64-linux-gnu-0.1.0-rc.1.tar.gz
+onnxruntime-nif-2.17-aarch64-linux-gnu-0.1.0.tar.gz
 ```
 
 `mix.exs` currently allows NIF versions `2.16`, `2.17`, and `2.18`, but only artifacts produced by the release workflow and listed in `checksum.exs` are available as precompiled downloads.
@@ -29,13 +29,13 @@ Targets outside the matrix, or NIF versions without a matching artifact, fall ba
 Edit `mix.exs` and update `@version`.
 
 ```elixir
-@version "0.1.0-rc.1"
+@version "0.1.0"
 ```
 
 Confirm the ONNX Runtime version is intentional.
 
 ```elixir
-@onnxruntime_version "1.26.0"
+@onnxruntime_version "1.30.0"
 ```
 
 If a changelog exists, update it in the same release branch.
@@ -61,7 +61,7 @@ rm -rf onnxruntime-<version>
 
 ```sh
 git add mix.exs checksum.exs README.md RELEASE.md .github/workflows
-git commit -m "Prepare v0.1.0-rc.1 release"
+git commit -m "Prepare v0.1.0 release"
 git push origin main
 ```
 
@@ -72,8 +72,8 @@ Adjust the file list and commit message to the actual change set.
 Precompiled artifacts are created by `.github/workflows/precompile.yml` when a version tag is pushed.
 
 ```sh
-git tag v0.1.0-rc.1
-git push origin v0.1.0-rc.1
+git tag v0.1.0
+git push origin v0.1.0
 ```
 
 For release candidates, tags containing `-rc` are marked as GitHub prereleases by the workflow.
@@ -88,7 +88,7 @@ gh run watch <run-id> --repo fishtreesugar/onnxruntime-elixir --exit-status
 Verify the release and assets:
 
 ```sh
-gh release view v0.1.0-rc.1 --repo fishtreesugar/onnxruntime-elixir --json tagName,isPrerelease,url,assets
+gh release view v0.1.0 --repo fishtreesugar/onnxruntime-elixir --json tagName,isPrerelease,url,assets
 ```
 
 If a matrix cell fails, fix the issue and publish a new release-candidate tag such as `v0.1.0-rc.1`. Avoid force-moving a public tag unless it has clearly failed and no consumers can reasonably depend on it yet.
@@ -113,9 +113,9 @@ Example:
 
 ```elixir
 %{
-  "onnxruntime-nif-2.17-aarch64-apple-darwin-0.1.0-rc.1.tar.gz" => "sha256:...",
-  "onnxruntime-nif-2.17-aarch64-linux-gnu-0.1.0-rc.1.tar.gz" => "sha256:...",
-  "onnxruntime-nif-2.17-x86_64-linux-gnu-0.1.0-rc.1.tar.gz" => "sha256:..."
+  "onnxruntime-nif-2.17-aarch64-apple-darwin-0.1.0.tar.gz" => "sha256:...",
+  "onnxruntime-nif-2.17-aarch64-linux-gnu-0.1.0.tar.gz" => "sha256:...",
+  "onnxruntime-nif-2.17-x86_64-linux-gnu-0.1.0.tar.gz" => "sha256:..."
 }
 ```
 
@@ -156,7 +156,7 @@ This should download and restore a precompiled tarball for the current target wh
 After the Hex package is published, run a second smoke test using the Hex dependency instead of the local path:
 
 ```elixir
-{:onnxruntime, "~> 0.1.0-rc.1"}
+{:onnxruntime, "~> 0.1.0"}
 ```
 
 ### 7. Verify Source Fallback
