@@ -1,8 +1,8 @@
 defmodule OnnxRuntime.MixProject do
   use Mix.Project
 
-  @version "0.1.0-rc.1"
-  @onnxruntime_version "1.26.0"
+  @version "0.1.0"
+  @onnxruntime_version "1.30.0"
   @github_repo System.get_env("GITHUB_REPOSITORY") || "fishtreesugar/onnxruntime-elixir"
   @github_url System.get_env("ONNXRUNTIME_ELIXIR_GITHUB_URL") ||
                 "https://github.com/#{@github_repo}"
@@ -71,7 +71,7 @@ defmodule OnnxRuntime.MixProject do
 
   defp deps do
     [
-      {:nx, "~> 0.12"},
+      {:nx, "~> 0.12 or ~> 1.0"},
       {:fine, "~> 0.1.6", runtime: false},
       {:elixir_make, "~> 0.10", runtime: false},
       {:cc_precompiler, "~> 0.1.6", runtime: false},

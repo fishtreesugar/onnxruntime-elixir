@@ -3,7 +3,7 @@ NIF_NAME := onnxruntime
 NIF_PATH := $(PRIV_DIR)/$(NIF_NAME).so
 C_SRC := $(shell pwd)/c_src
 VENDOR_DIR := $(shell pwd)/vendor/onnxruntime
-ONNXRUNTIME_VERSION ?= 1.26.0
+ONNXRUNTIME_VERSION ?= 1.30.0
 ORT_TARGET ?= $(if $(CC_PRECOMPILER_CURRENT_TARGET),$(CC_PRECOMPILER_CURRENT_TARGET),$(shell uname -s | tr '[:upper:]' '[:lower:]')-$(shell uname -m))
 
 CPPFLAGS += -shared -fPIC -fvisibility=hidden -std=c++17 -Wall -Wextra
